@@ -9,6 +9,18 @@ namespace PayrollApp.Data
         public DbSet<JobTitle> JobTitles { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Payroll> Payrolls { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<JobTitle>()
+                .HasIndex(j => j.Code)  // Specify the property for the index
+                .IsUnique();            // Set it to unique
+
+            // for employe id
+
+            modelBuilder.Entity<Employee>()
+            .HasIndex(j => j.Code)  
+            .IsUnique();
+        }
     }
 
 }

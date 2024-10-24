@@ -48,7 +48,7 @@ namespace PayrollApp.Controllers
         // GET: Employees/Create
         public IActionResult Create()
         {
-            ViewData["JobTitleId"] = new SelectList(_context.JobTitles, "Id", "Id");
+            ViewData["JobTitleId"] = new SelectList(_context.JobTitles, "Id", "Description");
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace PayrollApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["JobTitleId"] = new SelectList(_context.JobTitles, "Id", "Id", employee.JobTitleId);
+            ViewData["JobTitle"] = new SelectList(_context.JobTitles, "Id", "Id", employee.JobTitleId);
             return View(employee);
         }
 
@@ -83,7 +83,7 @@ namespace PayrollApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["JobTitleId"] = new SelectList(_context.JobTitles, "Id", "Id", employee.JobTitleId);
+            ViewData["JobTitleId"] = new SelectList(_context.JobTitles, "Id", "Description", employee.JobTitleId);
             return View(employee);
         }
 
@@ -98,7 +98,7 @@ namespace PayrollApp.Controllers
             {
                 return NotFound();
             }
-
+            ModelState.Remove("JobTitle");
             if (ModelState.IsValid)
             {
                 try
