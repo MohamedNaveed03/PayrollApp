@@ -48,7 +48,7 @@ namespace PayrollApp.Controllers
         // GET: Employees/Create
         public IActionResult Create()
         {
-            ViewData["JobTitleId"] = new SelectList(_context.JobTitles, "Id", "Description");
+            ViewData["JobTitleId"] = new SelectList(_context.JobTitles, "Id", "Code");
             return View();
         }
 

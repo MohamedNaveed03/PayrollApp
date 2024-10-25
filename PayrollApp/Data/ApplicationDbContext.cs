@@ -12,15 +12,24 @@ namespace PayrollApp.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<JobTitle>()
-                .HasIndex(j => j.Code)  // Specify the property for the index
-                .IsUnique();            // Set it to unique
-
-            // for employe id
+            .HasIndex(j => j.Code) 
+            .IsUnique(); 
 
             modelBuilder.Entity<Employee>()
-            .HasIndex(j => j.Code)  
-            .IsUnique();
+            .HasIndex(e => e.Code) 
+            .IsUnique(); 
+            
+            modelBuilder.Entity<JobTitle>()
+                .HasMany(j => j.Employees)
+                .WithOne(e => e.JobTitle)
+                .HasForeignKey(e => e.JobTitleId); 
+          
+            modelBuilder.Entity<JobTitle>().HasData(
+                new JobTitle { Id = 1, Code = "SM", Description = "Sales Manager", Salary = 20.00M },
+                new JobTitle { Id = 2, Code = "HR", Description = "HR Manager", Salary = 25.00M }
+            );
         }
+
     }
 
 }
