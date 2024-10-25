@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Payroll Report";
+}
+
+<h1>Payroll Report</h1>
+
+<p><strong>Basic Salary:</strong> @ViewBag.Basic</p>
+<p><strong>Housing Allowance:</strong> @ViewBag.Housing</p>
+<p><strong>Transport Allowance:</strong> @ViewBag.Transport</p>
+<p><strong>Tax Deducted:</strong> @ViewBag.Tax</p>
+<p><strong>Total Salary for the Month:</strong> @ViewBag.TotalSalary</p>
+
+<div>
+    <a asp-action="Index">Calculate Another</a>
+</div>
