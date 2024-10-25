@@ -2,7 +2,7 @@
     ViewData["Title"] = "Payroll Report";
 }
 
-<h1>Payroll Report</h1>
+<h1 class="mb-4">Payroll Report</h1>
 
 <p><strong>Basic Salary:</strong> @ViewBag.Basic</p>
 <p><strong>Housing Allowance:</strong> @ViewBag.Housing</p>
@@ -10,6 +10,15 @@
 <p><strong>Tax Deducted:</strong> @ViewBag.Tax</p>
 <p><strong>Total Salary for the Month:</strong> @ViewBag.TotalSalary</p>
 
-<div>
-    <a asp-action="Index">Calculate Another</a>
+<div class="mt-4" id="buttonContainer">
+    <a asp-action="Index" class="btn btn-primary me-2">Calculate Another</a>
+    <button onclick="printReport()" class="btn btn-secondary">Print</button>
 </div>
+
+<script>
+    function printReport() {
+        document.getElementById("buttonContainer").style.display = "none";
+        window.print();
+        document.getElementById("buttonContainer").style.display = "block";
+    }
+</script>

@@ -1,8 +1,35 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "HomePage";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container text-center mt-5">
+    <h1 class="display-4 font-weight-bold">Welcome to the Payroll Management System</h1>
+    <p class="lead">Streamlining your payroll process with efficiency and accuracy.</p>
+    <a href="/JobTitles" class="btn btn-primary btn-lg mt-4">Manage Job Titles</a>
+    <a href="/Employees" class="btn btn-secondary btn-lg mt-4">Manage Employees</a>
 </div>
+
+<style>
+
+    .display-4 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .lead {
+        color: #666;
+        font-size: 1.25rem;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        margin: 10px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background-color: #0056b3;
+        }
+</style>
+

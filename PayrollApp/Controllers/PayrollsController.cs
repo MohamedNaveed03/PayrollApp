@@ -37,20 +37,20 @@ namespace PayrollApp.Controllers
                 var employee = await _context.Employees.FindAsync(payroll.EmployeeId);
                 if (employee != null)
                 {
-         
-                    decimal hourlyWage = _context.JobTitles.Find(employee.JobTitleId).Salary;
-                    int yearsWorked = employee.YearsWorked;
-                    decimal currentWage = hourlyWage * (decimal)Math.Pow(1.1, yearsWorked - 1);
-                    decimal totalSalary = currentWage * payroll.TotalHoursWorked;
-                    decimal basic = totalSalary * 0.64M;
-                    decimal housing = totalSalary * 0.24M;
-                    decimal transport = totalSalary * 0.12M;
 
-                 
+                    decimal hourlyWage = Math.Round(_context.JobTitles.Find(employee.JobTitleId).Salary, 2);
+                    int yearsWorked = employee.YearsWorked;
+                    decimal currentWage = Math.Round(hourlyWage * (decimal)Math.Pow(1.1, yearsWorked - 1), 2);
+                    decimal totalSalary = Math.Round(currentWage * payroll.TotalHoursWorked, 2);
+                    decimal basic = Math.Round(totalSalary * 0.64M, 2);
+                    decimal housing = Math.Round(totalSalary * 0.24M, 2);
+                    decimal transport = Math.Round(totalSalary * 0.12M, 2);
+
+
                     decimal tax = 0;
                     if (basic > 1000)
                     {
-                        tax = (basic - 1000) * 0.30M;
+                        tax = Math.Round((basic - 1000) * 0.30M);
                     }
 
                     
