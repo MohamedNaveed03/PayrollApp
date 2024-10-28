@@ -2,17 +2,23 @@
     ViewData["Title"] = "Payroll Report";
 }
 
-<h1 class="mb-4">Payroll Report</h1>
+<div class="container my-5 p-4 border rounded shadow-sm bg-white">
+    <h1 class="text-center mb-4 display-6 text-primary">Payroll Report</h1>
 
-<p><strong>Basic Salary:</strong> @ViewBag.Basic</p>
-<p><strong>Housing Allowance:</strong> @ViewBag.Housing</p>
-<p><strong>Transport Allowance:</strong> @ViewBag.Transport</p>
-<p><strong>Tax Deducted:</strong> @ViewBag.Tax</p>
-<p><strong>Total Salary for the Month:</strong> @ViewBag.TotalSalary</p>
+    <div class="mb-4">
+        <p><strong>Employee Name:</strong> <span class="text-secondary">@ViewBag.EmployeeName</span></p>
+        <p><strong>Basic Salary:</strong> <span class="text-success">$@ViewBag.Basic</span></p>
+        <p><strong>Housing Allowance:</strong> <span class="text-success">$@ViewBag.Housing</span></p>
+        <p><strong>Transport Allowance:</strong> <span class="text-success">$@ViewBag.Transport</span></p>
+        <p><strong>Tax Deducted:</strong> <span class="text-danger">$@ViewBag.Tax</span></p>
+        <hr class="my-3">
+        <p class="h5"><strong>Total Salary for the Month:</strong> <span class="text-primary">$@ViewBag.TotalSalary</span></p>
+    </div>
 
-<div class="mt-4" id="buttonContainer">
-    <a asp-action="Index" class="btn btn-primary me-2">Calculate Another</a>
-    <button onclick="printReport()" class="btn btn-secondary">Print</button>
+    <div class="mt-4 text-center" id="buttonContainer">
+        <a asp-action="Index" class="btn btn-outline-primary me-2 px-4">Calculate Another</a>
+        <button onclick="printReport()" class="btn btn-outline-secondary px-4">Print</button>
+    </div>
 </div>
 
 <script>

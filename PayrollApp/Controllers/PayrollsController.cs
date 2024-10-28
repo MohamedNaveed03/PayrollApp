@@ -53,7 +53,9 @@ namespace PayrollApp.Controllers
                         tax = Math.Round((basic - 1000) * 0.30M);
                     }
 
-                    
+                    var employeeName = employee.Name;
+
+                    ViewBag.EmployeeName = employeeName;
                     ViewBag.Basic = basic;
                     ViewBag.Housing = housing;
                     ViewBag.Transport = transport;
